@@ -89,7 +89,7 @@ class Fat16Interpreter:
                 curr_cluster = self.full_disk[starting_index: starting_index + self.sector_size]
                 print("         " + curr_cluster[0: curr_cluster.index(10)].decode("utf-8"))
             curr_node_index = self.linked_list[curr_node_index]
-            
+
     def create_linked_list(self, curr_node_index):
         next_node_index = self.find_next_node_index(curr_node_index)  # read the FAT at curr index
         if hex(next_node_index) == '0xffff':
@@ -119,5 +119,5 @@ class Fat16Interpreter:
 
 
 fat16Int = Fat16Interpreter()
-fat16Int.read_disk_image('Source/test.img')
+fat16Int.read_disk_image('disk_image_test/test.img')
 print(fat16Int.linked_list)
